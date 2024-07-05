@@ -1,20 +1,8 @@
 import "./App.css";
 import ArticleList from "./components/ArticleList";
-import { useEffect, useState } from "react";
+import articles from "./data";
 
 export default function App() {
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    async function fetchArticles() {
-      const res = await fetch("/api/articles");
-      const data = await res.json();
-      setArticles(data);
-    }
-
-    fetchArticles();
-  }, []);
-
   return (
     <>
       <div>
