@@ -1,5 +1,4 @@
-export let articles;
-articles = [
+const articles = [
   {
     id: 1,
     title: "日本一美味しいおかず",
@@ -16,4 +15,22 @@ articles = [
     category: "哲学",
     tags: ["哲学"],
   },
+  {
+    id: 3,
+    title: "日本一元気なひと",
+    content: "それは私です",
+    publishedAt: "2024-07-03T00:00:00Z",
+    category: "哲学",
+    tags: ["哲学"],
+  },
+  {
+    id: 4,
+    title: "日本一元気なひと",
+    content: "それは私です",
+    publishedAt: "2024-07-03T00:00:00Z",
+    category: "哲学",
+    tags: ["哲学"],
+  },
 ];
+
+export default articles;
