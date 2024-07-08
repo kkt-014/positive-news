@@ -1,6 +1,6 @@
 import "./App.css";
 import ArticleList from "./components/ArticleList";
-import articles from "./data";
+import articles from "./data.js";
 import HeroSection from "./components/HeroSection.tsx";
 import Header from "./components/Header.tsx";
 
@@ -15,7 +15,6 @@ export default function App() {
           <Header />
           <HeroSection />
           <ArticleList articles={articles} />
-          {/* ... (フッターなど) ... */}
         </div>
       </div>
     </>

@@ -1,39 +1,38 @@
 import { Link } from "react-router-dom";
 
-interface ArticleItemProps {
-  article: {
-    id: number;
-    title: string;
-    publishedAt: string;
-    category: string;
-    tags: string[];
-  };
+export interface Article {
+  // ArticleItemProps を Article に変更
+  id: number;
+  title: string;
+  publishedAt: string;
+  author: string;
+  imageUrl?: string;
 }
 
-export default function ArticleItem({ article }: ArticleItemProps) {
+export default function ArticleItem({ article }: { article: Article }) {
   return (
-    <li className="flex flex-col gap-3 pb-3">
-      <Link to={`/articles/${article.id}`}>
-        <h2 className="text-base font-medium leading-normal text-[#181711]">
-          {article.title}
-        </h2>
-      </Link>
-      <p className="text-sm font-normal leading-normal text-[#8a8560]">
-        {article.publishedAt}
-      </p>
-      <p className="text-sm font-normal leading-normal text-[#8a8560]">
-        {article.category}
-      </p>
-      <ul className="flex gap-2">
-        {article.tags.map((tag) => (
-          <li
-            key={tag}
-            className="text-sm font-normal leading-normal text-[#8a8560]"
-          >
-            {tag}
-          </li>
-        ))}
-      </ul>
-    </li>
+    <div className="flex flex-col gap-3 pb-3">
+      <div
+        className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+        style={{
+          backgroundImage: article.imageUrl
+            ? `url(${article.imageUrl})`
+            : `url('https://picsum.photos/seed/${article.id}/800')`,
+        }} // imageUrl があればそれを、なければダミー画像を使用
+      ></div>
+      <div>
+        <Link to={`/articles/${article.id}`}>
+          <p className="text-[#181711] text-base font-medium leading-normal">
+            {article.title}
+          </p>
+        </Link>
+        <p className="text-[#8a8560] text-sm font-normal leading-normal">
+          {article.publishedAt}
+        </p>
+        <p className="text-[#8a8560] text-sm font-normal leading-normal">
+          {article.author}
+        </p>
+      </div>
+    </div>
   );
 }
