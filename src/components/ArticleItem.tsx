@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export interface Article {
-  // ArticleItemProps を Article に変更
   id: number;
   title: string;
   publishedAt: string;
@@ -13,7 +12,7 @@ export default function ArticleItem({ article }: { article: Article }) {
   return (
     <div className="flex flex-col gap-3 pb-3">
       <div
-        className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+        className="aspect-video w-full rounded-xl bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: article.imageUrl
             ? `url(${article.imageUrl})`
