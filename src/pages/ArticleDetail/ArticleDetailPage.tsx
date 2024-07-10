@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import { Article } from "../../components/ArticleItem";
 import ArticleHeader from "./ArticleHeader";
 import ArticleImage from "./ArticleImage";
 import ArticleContent from "./ArticleContent";
 import ShareButton from "./ShareButton";
+import { Article } from "../../api/news.tsx";
 
-export default function ArticleDetailPage({
-  articles,
-}: {
+type Props = {
   articles: Article[];
-}) {
+};
+
+export default function ArticleDetailPage({ articles }: Props) {
   const { articleId } = useParams();
   const article = articles.find((a) => a.id === Number(articleId));
 
@@ -19,13 +19,9 @@ export default function ArticleDetailPage({
 
   return (
     <div className="layout-content-container flex flex-col max-w-[920px] flex-1">
-      <ArticleHeader
-        title={article.title}
-        author={article.author}
-        date={article.publishedAt}
-      />
+      <ArticleHeader article={article} />
       {article.imageUrl && <ArticleImage imageUrl={article.imageUrl} />}
-      <ArticleContent content={article.content} />
+      <ArticleContent article={article} />
       <h2 className="text-[#181711] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
         Share this article
       </h2>
