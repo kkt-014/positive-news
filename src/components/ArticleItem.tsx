@@ -6,6 +6,7 @@ export interface Article {
   publishedAt: string;
   author: string;
   imageUrl?: string;
+  content: string;
 }
 
 export default function ArticleItem({ article }: { article: Article }) {

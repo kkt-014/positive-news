@@ -1,8 +1,10 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import ArticleList from "./components/ArticleList";
 import articles from "./data.ts";
 import HeroSection from "./components/HeroSection.tsx";
 import Header from "./components/Header.tsx";
+import ArticleDetailPage from "./pages/ArticleDetail/ArticleDetailPage";
 
 export default function App() {
   return (
@@ -13,8 +15,21 @@ export default function App() {
       >
         <div className="layout-container flex h-full grow flex-col">
           <Header />
-          <HeroSection />
-          <ArticleList articles={articles} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <HeroSection />
+                  <ArticleList articles={articles} />
+                </>
+              }
+            />
+            <Route
+              path="/articles/:articleId"
+              element={<ArticleDetailPage articles={articles} />}
+            />
+          </Routes>
         </div>
       </div>
     </>
