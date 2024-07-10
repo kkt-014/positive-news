@@ -1,7 +1,13 @@
-import { Article } from "../components/ArticleItem";
-
 const apiKey = "bb3dc1bd950345bc889e8d9705a18803";
 
+export interface Article {
+  id: number;
+  title: string;
+  publishedAt: string;
+  author: string;
+  imageUrl?: string;
+  content: string;
+}
 export async function fetchNewsArticles(): Promise<Article[]> {
   const response = await fetch(
     `https://newsapi.org/v2/top-headlines?country=ja&apiKey=${apiKey}`,

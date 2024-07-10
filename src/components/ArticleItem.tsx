@@ -1,13 +1,5 @@
 import { Link } from "react-router-dom";
-
-export interface Article {
-  id: number;
-  title: string;
-  publishedAt: string;
-  author: string;
-  imageUrl?: string;
-  content: string;
-}
+import { Article } from "../api/news.tsx";
 
 export default function ArticleItem({ article }: { article: Article }) {
   return (

@@ -1,4 +1,5 @@
-import ArticleItem, { Article } from "./ArticleItem";
+import ArticleItem from "./ArticleItem";
+import { Article } from "../api/news.tsx";
 
 export default function ArticleList({ articles }: { articles: Article[] }) {
   return (
