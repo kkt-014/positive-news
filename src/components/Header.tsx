@@ -1,4 +1,4 @@
-export default function Header() {
+export function Header() {
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f5f4f0] px-10 py-3">
       <div className="flex items-center gap-4 text-[#181711]">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Article } from "../api/news.tsx";
 
-export default function ArticleItem({ article }: { article: Article }) {
+export function ArticleItem({ article }: { article: Article }) {
   return (
     <div className="flex flex-col gap-3 pb-3">
       <div

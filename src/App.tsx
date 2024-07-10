@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import ArticleList from "./components/ArticleList";
+import { ArticleList } from "./components/ArticleList";
 import articles from "./data.ts";
-import HeroSection from "./components/HeroSection.tsx";
-import Header from "./components/Header.tsx";
+import { HeroSection } from "./components/HeroSection.tsx";
+import { Header } from "./components/Header.tsx";
 import ArticleDetailPage from "./pages/ArticleDetail/ArticleDetailPage";
 
-export default function App() {
+export function App() {
   return (
     <>
       <div

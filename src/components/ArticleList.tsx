@@ -1,7 +1,7 @@
-import ArticleItem from "./ArticleItem";
+import { ArticleItem } from "./ArticleItem";
 import { Article } from "../api/news.tsx";
 
-export default function ArticleList({ articles }: { articles: Article[] }) {
+export function ArticleList({ articles }: { articles: Article[] }) {
   return (
     <div className="flex flex-1 justify-center px-40 py-5">
       <div className="layout-content-container flex max-w-[960px] flex-1 flex-col">
