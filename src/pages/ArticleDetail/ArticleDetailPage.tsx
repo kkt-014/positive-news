@@ -21,10 +21,10 @@ export default function ArticleDetailPage({
     <div className="layout-content-container flex flex-col max-w-[920px] flex-1">
       <ArticleHeader
         title={article.title}
-        source={article.author} // author を source として表示
+        author={article.author}
         date={article.publishedAt}
       />
-      <ArticleImage imageUrl={article.imageUrl} />
+      {article.imageUrl && <ArticleImage imageUrl={article.imageUrl} />}
       <ArticleContent content={article.content} />
       <h2 className="text-[#181711] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
         Share this article
