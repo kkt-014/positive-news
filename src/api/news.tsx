@@ -10,7 +10,7 @@ export interface Article {
   updatedAt: string;
   author: string;
   url: string;
-  imageUrl?: string;
+  urlToImage?: string;
   content: string;
 }
 
@@ -38,7 +38,7 @@ export const fetchArticles = async (): Promise<Article[]> => {
       updatedAt: formatTimestamp(data.updatedAt) || "",
       author: data.author || "",
       url: data.url || "",
-      imageUrl: data.urlToImage,
+      urlToImage: data.urlToImage,
       content: data.content || "",
     });
   });

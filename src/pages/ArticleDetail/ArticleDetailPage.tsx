@@ -9,9 +9,9 @@ type Props = {
   articles: Article[];
 };
 
-export default function ArticleDetailPage({ articles }: Props) {
+export function ArticleDetailPage({ articles }: Props) {
   const { articleId } = useParams();
-  const article = articles.find((a) => a.id === Number(articleId));
+  const article = articles.find((a) => a.id === articleId);
 
   if (!article) {
     return <div>Article not found</div>;
@@ -20,7 +20,7 @@ export default function ArticleDetailPage({ articles }: Props) {
   return (
     <div className="layout-content-container flex flex-col max-w-[920px] flex-1">
       <ArticleHeader article={article} />
-      {article.imageUrl && <ArticleImage imageUrl={article.imageUrl} />}
+      {article.urlToImage && <ArticleImage urlToImage={article.urlToImage} />}
       <ArticleContent article={article} />
       <h2 className="text-[#181711] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
         Share this article

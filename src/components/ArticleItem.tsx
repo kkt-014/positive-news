@@ -7,10 +7,10 @@ export function ArticleItem({ article }: { article: Article }) {
       <div
         className="aspect-video w-full rounded-xl bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: article.imageUrl
-            ? `url(${article.imageUrl})`
+          backgroundImage: article.urlToImage
+            ? `url(${article.urlToImage})`
             : `url('https://picsum.photos/seed/${article.id}/800')`,
-        }} // imageUrl があればそれを、なければダミー画像を使用
+        }} // urlToImage があればそれを、なければダミー画像を使用
       ></div>
       <div>
         <Link to={`/articles/${article.id}`}>
