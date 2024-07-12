@@ -1,12 +1,29 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { ArticleList } from "./components/ArticleList";
-import articles from "./data.ts";
+// import articles from "./data.ts";
 import { HeroSection } from "./components/HeroSection.tsx";
 import { Header } from "./components/Header.tsx";
-import ArticleDetailPage from "./pages/ArticleDetail/ArticleDetailPage";
+import { ArticleDetailPage } from "./pages/ArticleDetail/ArticleDetailPage";
+import { Article, fetchArticles } from "./api/news.tsx";
+import { useEffect, useState } from "react";
 
 export function App() {
+  const [articles, setArticles] = useState<Article[]>([]);
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        const fetchedArticles = await fetchArticles();
+        setArticles(fetchedArticles);
+        console.log("記事取得！", fetchArticles);
+      } catch (err) {
+        console.error("記事取得失敗！", err);
+      }
+    };
+
+    loadArticles();
+  }, []);
+
   return (
     <>
       <div
