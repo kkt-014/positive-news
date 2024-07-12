@@ -29,7 +29,7 @@ export const fetchArticles = async (): Promise<Article[]> => {
       });
     });
 
-    console.log("取得した記事数:", articles.length);
+    console.log("取得した記事", articles);
     return articles;
   } catch (error) {
     console.error("記事の取得中にエラーが発生しました:", error);
