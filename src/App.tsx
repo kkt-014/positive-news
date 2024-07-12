@@ -16,8 +16,8 @@ export function App() {
         const fetchedArticles = await fetchArticles();
         setArticles(fetchedArticles);
         console.log("記事取得！", fetchedArticles);
-      } catch (err) {
-        console.error("記事取得失敗！", err);
+      } catch (error) {
+        console.error("記事取得失敗！", error);
       }
     };
 

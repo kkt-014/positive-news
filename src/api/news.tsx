@@ -11,22 +11,28 @@ export interface Article {
 }
 
 export const fetchArticles = async (): Promise<Article[]> => {
-  const articlesCollection = collection(db, "articles");
-  const querySnapshot = await getDocs(articlesCollection);
+  try {
+    const articlesCollection = collection(db, "articles");
+    const querySnapshot = await getDocs(articlesCollection);
 
-  const articles: Article[] = [];
+    const articles: Article[] = [];
 
-  querySnapshot.forEach((doc) => {
-    const data = doc.data();
-    articles.push({
-      id: data.id,
-      title: data.title || "",
-      publishedAt: data.publishedAt || "",
-      author: data.author || "",
-      imageUrl: data.imageUrl,
-      content: data.content || "",
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      articles.push({
+        id: data.id,
+        title: data.title || "",
+        publishedAt: data.publishedAt || "",
+        author: data.author || "",
+        imageUrl: data.imageUrl,
+        content: data.content || "",
+      });
     });
-  });
 
-  return articles;
+    console.log("取得した記事数:", articles.length);
+    return articles;
+  } catch (error) {
+    console.error("記事の取得中にエラーが発生しました:", error);
+    throw error; // エラーを再スローして、呼び出し元でキャッチできるようにする
+  }
 };
