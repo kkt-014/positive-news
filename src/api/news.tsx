@@ -4,35 +4,37 @@ import { db } from "../firebase.ts";
 export interface Article {
   id: string;
   title: string;
+  description: string;
+  createdAt: string;
   publishedAt: string;
+  updatedAt: string;
   author: string;
+  url: string;
   imageUrl?: string;
   content: string;
 }
 
 export const fetchArticles = async (): Promise<Article[]> => {
-  try {
-    const articlesCollection = collection(db, "articles");
-    const querySnapshot = await getDocs(articlesCollection);
+  const articlesCollection = collection(db, "articles");
+  const querySnapshot = await getDocs(articlesCollection);
 
-    const articles: Article[] = [];
+  const articles: Article[] = [];
 
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      articles.push({
-        id: data.id,
-        title: data.title || "",
-        publishedAt: data.publishedAt || "",
-        author: data.author || "",
-        imageUrl: data.imageUrl,
-        content: data.content || "",
-      });
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    articles.push({
+      id: data.sourceId,
+      title: data.title || "",
+      description: data.description || "",
+      createdAt: data.createdAt || "",
+      publishedAt: data.publishedAt || "",
+      updatedAt: data.updatedAt || "",
+      author: data.author || "",
+      url: data.url || "",
+      imageUrl: data.urlToImage,
+      content: data.content || "",
     });
+  });
 
-    console.log("取得した記事", articles);
-    return articles;
-  } catch (error) {
-    console.error("記事の取得中にエラーが発生しました:", error);
-    throw error; // エラーを再スローして、呼び出し元でキャッチできるようにする
-  }
+  return articles;
 };
