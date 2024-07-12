@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, Timestamp } from "firebase/firestore";
 import { db } from "../firebase.ts";
 
 export interface Article {
@@ -14,6 +14,13 @@ export interface Article {
   content: string;
 }
 
+export function formatTimestamp(
+  timestamp: Timestamp | null | undefined,
+): string {
+  if (!timestamp) return "";
+  return timestamp.toDate().toLocaleString();
+}
+
 export const fetchArticles = async (): Promise<Article[]> => {
   const articlesCollection = collection(db, "articles");
   const querySnapshot = await getDocs(articlesCollection);
@@ -26,9 +33,9 @@ export const fetchArticles = async (): Promise<Article[]> => {
       id: data.sourceId,
       title: data.title || "",
       description: data.description || "",
-      createdAt: data.createdAt || "",
-      publishedAt: data.publishedAt || "",
-      updatedAt: data.updatedAt || "",
+      createdAt: formatTimestamp(data.createdAt) || "",
+      publishedAt: formatTimestamp(data.publishedAt) || "",
+      updatedAt: formatTimestamp(data.updatedAt) || "",
       author: data.author || "",
       url: data.url || "",
       imageUrl: data.urlToImage,
