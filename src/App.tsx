@@ -30,6 +30,7 @@ export function App() {
         className="group/design-root relative flex size-full min-h-screen flex-col overflow-x-hidden bg-white"
         style={{ fontFamily: 'Newsreader, "Noto Sans", sans-serif' }}
       >
+        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
         <div className="layout-container flex h-full grow flex-col">
           <Header />
           <Routes>
