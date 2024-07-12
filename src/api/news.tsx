@@ -1,4 +1,4 @@
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase.ts";
 
 export interface Article {
@@ -10,12 +10,23 @@ export interface Article {
   content: string;
 }
 
-const docRef = doc(db, "cities", "SF");
-const docSnap = await getDoc(docRef);
+export const fetchArticles = async (): Promise<Article[]> => {
+  const articlesCollection = collection(db, "articles");
+  const querySnapshot = await getDocs(articlesCollection);
 
-if (docSnap.exists()) {
-  console.log("Document data:", docSnap.data());
-} else {
-  // docSnap.data() will be undefined in this case
-  console.log("No such document!");
-}
+  const articles: Article[] = [];
+
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    articles.push({
+      id: data.id,
+      title: data.title || "",
+      publishedAt: data.publishedAt || "",
+      author: data.author || "",
+      imageUrl: data.imageUrl,
+      content: data.content || "",
+    });
+  });
+
+  return articles;
+};
