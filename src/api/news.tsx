@@ -14,14 +14,12 @@ export interface Article {
   content: string;
 }
 
-export function formatTimestamp(
-  timestamp: Timestamp | null | undefined,
-): string {
+function formatTimestamp(timestamp: Timestamp | null | undefined): string {
   if (!timestamp) return "";
   return timestamp.toDate().toLocaleString();
 }
 
-export const fetchArticles = async (): Promise<Article[]> => {
+export async function fetchArticles(): Promise<Article[]> {
   const articlesCollection = collection(db, "articles");
   const querySnapshot = await getDocs(articlesCollection);
 
@@ -44,4 +42,4 @@ export const fetchArticles = async (): Promise<Article[]> => {
   });
 
   return articles;
-};
+}
