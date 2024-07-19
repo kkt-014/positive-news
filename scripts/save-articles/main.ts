@@ -1,5 +1,7 @@
+import { fetchArticles } from "./fetch-articles";
+
 const main = () => {
-  console.log("main");
+  fetchArticles();
 };
 
 main();

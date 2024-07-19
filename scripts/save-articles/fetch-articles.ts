@@ -37,7 +37,7 @@ async function fetchNewsApi(
           apiKey: apiKey,
           q: query,
           pageSize: pageSize,
-          language: "en",
+          language: "jp",
         },
       },
     );
@@ -51,15 +51,10 @@ async function fetchNewsApi(
 
 export async function fetchArticles() {
   const API_KEY = env.VITE_NEWS_API_KEY;
-  const QUERY = "検索したいキーワードを入れてください";
+  const QUERY = "ポジティブ";
 
   if (!API_KEY) {
-    console.error("News API key is not set in the environment variables.");
-    process.exit(1);
+    throw new Error("News API key is not set in the environment variables.");
   }
-
-  const articles = await fetchNewsApi(API_KEY, QUERY);
-  console.log(JSON.stringify(articles, null, 2));
+  return await fetchNewsApi(API_KEY, QUERY);
 }
-
-fetchArticles().catch(console.error);
