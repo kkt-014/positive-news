@@ -27,7 +27,7 @@ export interface Article {
 async function fetchNewsApi(
   apiKey: string,
   query: string,
-  pageSize: number = 10,
+  pageSize: number = 5,
 ): Promise<Article[]> {
   try {
     const response = await axios.get<NewsApiResponse>(
