@@ -24,6 +24,8 @@ export interface Article {
   content: string | null;
 }
 
+// おためしで5件取得
+
 async function fetchNewsApi(
   apiKey: string,
   query: string,

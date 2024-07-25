@@ -1,31 +1,13 @@
-// import { fetchArticles } from "./fetch-articles";
-//
-// const main = async () => {
-//   try {
-//     const articles = await fetchArticles();
-//     console.log(`Fetched ${articles.length} articles:`);
-//     articles.forEach((article, index) => {
-//       console.log(`${index + 1}. ${article.title}`);
-//     });
-//   } catch (error) {
-//     console.error("Error fetching articles:", error);
-//   }
-// };
-//
-// main().catch(error => {
-//   console.error("Unhandled error in main function:", error);
-// });
-
 import { fetchArticles, Article } from "./fetch-articles";
 
 const displayFullArticle = (article: Article) => {
   console.log("==================================");
-  console.log(`タイトル: ${article.title}`);
-  console.log(`著者: ${article.author || "不明"}`);
-  console.log(`公開日: ${new Date(article.publishedAt).toLocaleString()}`);
-  console.log(`説明: ${article.description || "なし"}`);
+  console.log(`title: ${article.title}`);
+  console.log(`author: ${article.author || "不明"}`);
+  console.log(`publishAt: ${new Date(article.publishedAt).toLocaleString()}`);
+  console.log(`description: ${article.description || "なし"}`);
   console.log(`URL: ${article.url}`);
-  console.log(`内容: ${article.content || "なし"}`);
+  console.log(`content: ${article.content || "なし"}`);
   console.log("==================================\n");
 };
 
