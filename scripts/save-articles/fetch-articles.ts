@@ -24,10 +24,12 @@ export interface Article {
   content: string | null;
 }
 
+// おためしで5件取得
+
 async function fetchNewsApi(
   apiKey: string,
   query: string,
-  pageSize: number = 10,
+  pageSize: number = 5,
 ): Promise<Article[]> {
   try {
     const response = await axios.get<NewsApiResponse>(
